@@ -30,7 +30,13 @@ const DatosPersonales = ({ updateStep }) => {
       }}
       onSubmit={(e) => {
         e.preventDefault();
-        updateStep(2)
+        if(name.valid && lastName.valid && phone.valid){
+          console.log("Siguiente formulario")
+          console.log(name, lastName, phone)
+          updateStep(2)
+        }else{
+          console.log("No hacer nada")
+        }
       }}
     >
       <TextField

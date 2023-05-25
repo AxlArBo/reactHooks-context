@@ -30,8 +30,13 @@ const DatosEntrega = ( {updateStep} ) => {
       }}
       onSubmit={(e) => {
         e.preventDefault();
-        updateStep(3);
-        console.log(city, address, province)
+        if(address.valid && city.valid && province.valid){
+          console.log("Siguiente formulario")
+          console.log(address, city, province)
+          updateStep(3)
+        }else{
+          console.log("No hacer nada")
+        }
       }}
     >
       <TextField
