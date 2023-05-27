@@ -15,9 +15,9 @@ const Form = () => {
   const [step, setStep] = useState(0)
   const [pasos, setPasos] = useState({})
 
-  useEffect(() => {
-    console.log('Use effect');
-  });
+  // useEffect(() => {
+  //   console.log('Use effect');
+  // });
 
   useEffect(() => {
     console.log('Se ha actualizado el step: ', step);
@@ -94,26 +94,71 @@ const Form = () => {
     1: {
       inputs: [
         {
-          label: 'Correo electrónico',
-          type: 'email',
+          label: 'Nombre',
+          type: 'text',
           value: '',
           valid: null,
           onChange: handleChange,
-          helperText: 'Ingresa un correo váldo',
+          helperText: 'Ingresa al menos 2 caracteres',
           validator: validarEmail,
         },
         {
-          label: 'Contraseña',
-          type: 'password',
+          label: 'Apellidos',
+          type: 'text',
           value: '',
           valid: null,
           onChange: handleChange,
-          helperText: 'Ingresa una contraseña válida, al menos 8 caracteres y máximo 20',
+          helperText: 'Ingresa al menos 2 caracteres',
+          validator: validarPassword,
+        },
+        {
+          label: 'Numero telefonico',
+          type: 'number',
+          value: '',
+          valid: null,
+          onChange: handleChange,
+          helperText: 'Ingresa un numero telefonico valido',
           validator: validarPassword,
         },
       ],
       buttonText: 'Siguiente',
       onSubmit
+    },
+    2: {
+      inputs: [
+        {
+          label: 'Direccion',
+          type: 'text',
+          value: '',
+          valid: null,
+          onChange: handleChange,
+          helperText: 'Ingresa al menos 4 caracteres',
+          validator: validarEmail,
+        },
+        {
+          label: 'Ciudad',
+          type: 'text',
+          value: '',
+          valid: null,
+          onChange: handleChange,
+          helperText: 'Ingresa al menos 4 caracteres',
+          validator: validarPassword,
+        },
+        {
+          label: 'Estado/Provincia',
+          type: 'text',
+          value: '',
+          valid: null,
+          onChange: handleChange,
+          helperText: 'Ingresa al menos 4 caracteres',
+          validator: validarPassword,
+        },
+      ],
+      buttonText: 'Crear cuenta',
+      onSubmit
+    },
+    3: {
+
     },
   }
 
@@ -131,8 +176,8 @@ const Form = () => {
       </LogoSpace>
       <FormSpace>
         { (step < 3) && <Stepper step={step}/> }
-        {/*steps[step]*/}
         <Step data={ stepFlow[step] } step={step} />
+        {steps[step]}
       </FormSpace>
     </Box>
   );
